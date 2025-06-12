@@ -29,8 +29,20 @@ if uploaded_file is not None:
     pixel_size = st.slider("Select pixel size", min_value=4, max_value=64, value=16, step=4)
 
     st.markdown("**Custom output dimensions (in pixels):**")
-    custom_width = st.number_input("Output Width", min_value=16, max_value=2000, value=orig_width, step=8)
-    custom_height = st.number_input("Output Height", min_value=16, max_value=2000, value=orig_height, step=8)
+    custom_width = st.number_input(
+        "Output Width",
+        min_value=16,
+        max_value=max(orig_width, 16),
+        value=min(orig_width, 2000),
+        step=8
+    )
+    custom_height = st.number_input(
+        "Output Height",
+        min_value=16,
+        max_value=max(orig_height, 16),
+        value=min(orig_height, 2000),
+        step=8
+    )
 
     # Perform pixelation using OpenCV
     temp = cv2.resize(img_array, (custom_width // pixel_size, custom_height // pixel_size), interpolation=cv2.INTER_LINEAR)
@@ -46,11 +58,11 @@ if uploaded_file is not None:
     byte_im = buf.getvalue()
 
     st.download_button(
-        label="📥 Download Pixelated Image",
+        label="Download Pixelated Image",
         data=byte_im,
         file_name="pixel_art.png",
         mime="image/png"
     )
 
 else:
-    st.info("Please upload an image to continue.")
+    st.info("⬆ Please upload an image to continue.")
