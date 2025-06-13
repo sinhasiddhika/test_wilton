@@ -31,17 +31,17 @@ if uploaded_file is not None:
     st.markdown("**Custom output dimensions (in pixels):**")
     custom_width = st.number_input(
         "Output Width",
-        min_value=16,
-        max_value=max(orig_width, 16),
-        value=min(orig_width, 2000),
-        step=8
+        min_value=20,
+        max_value=max(orig_width, 20),
+        value=min(orig_width, 1300),
+        step=2
     )
     custom_height = st.number_input(
         "Output Height",
-        min_value=16,
-        max_value=max(orig_height, 16),
-        value=min(orig_height, 2000),
-        step=8
+        min_value=20,
+        max_value=max(orig_height, 20),
+        value=min(orig_height, 1300),
+        step=2
     )
 
     # Perform pixelation using OpenCV
