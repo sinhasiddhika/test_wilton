@@ -26,7 +26,7 @@ if uploaded_file is not None:
 
     # Pixelation parameters
     st.subheader("Pixelation Controls")
-    pixel_size = st.slider("Select pixel size", min_value=4, max_value=64, value=16, step=4)
+    pixel_size = st.slider("Select pixel size", min_value=2, max_value=64, value=20, step=2)
 
     st.markdown("**Custom output dimensions (in pixels):**")
     custom_width = st.number_input(
